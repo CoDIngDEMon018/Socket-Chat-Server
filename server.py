@@ -6,6 +6,7 @@ Supports: Login, Broadcasting, WHO, DM, PING/PONG, Idle Timeout
 import socket
 import threading
 import sys
+import os
 
 # Global dictionary: username -> connection socket
 clients = {}
@@ -13,7 +14,7 @@ clients_lock = threading.Lock()
 
 # Configuration
 HOST = '0.0.0.0'  # Listen on all interfaces
-PORT = 4000       # Default port
+PORT = int(os.getenv('PORT', 4000))       # Default port
 IDLE_TIMEOUT = 3600  # 1 hour (adjustable for testing)
 
 
